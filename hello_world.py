@@ -1,3 +1,4 @@
+#Create a Simple Qt Widgets Application// [Qt Widgets= type of app to be created]
 import sys
 import  random
 from PySide6 import QtCore,QtWidgets,QtGui
