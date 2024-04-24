@@ -1,12 +1,21 @@
 from PySide6 import QtWidgets
+import currency_converter
+
+"""
+>>> import currency_converter
+>>> c=currency_converter.CurrencyConverter()
+>>> c.currencies
+"""
 
 
 class App(QtWidgets.QWidget):
     def __init__(self):
         # QtWidgets.QWidget.__init__()
         super().__init__()
+        self.c = currency_converter.CurrencyConverter()
         self.setWindowTitle("Currency Converter")
         self.setup_ui()
+        self.set_default_values()
 
     def setup_ui(self):
         self.layout = QtWidgets.QHBoxLayout(self)
@@ -21,6 +30,20 @@ class App(QtWidgets.QWidget):
         self.layout.addWidget(self.ccb_currency_to)
         self.layout.addWidget(self.spn_amount_converted)
         self.layout.addWidget(self.btn_inverse)
+
+    def set_default_values(self):
+        # self.ccb_currency_from.addItems(["1", "2", "3"])
+        self.ccb_currency_from.addItems(sorted(list(self.c.currencies)))
+        self.ccb_currency_to.addItems(sorted(list(self.c.currencies)))
+
+        self.ccb_currency_from.setCurrentText("EUR")
+        self.ccb_currency_to.setCurrentText("EUR")
+
+        self.spn_amount.setRange(1, 1000000000)
+        self.spn_amount_converted.setRange(1, 1000000000)
+
+        self.spn_amount.setValue(100)
+        self.spn_amount_converted.setValue(100)
 
 
 app = QtWidgets.QApplication([])
