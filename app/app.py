@@ -17,6 +17,8 @@ class App(QtWidgets.QWidget):
         self.setup_ui()
         self.set_default_values()
         self.setup_connections()
+        self.setup_css()
+        self.resize(500, 50)
 
     def setup_ui(self):
         self.layout = QtWidgets.QHBoxLayout(self)
@@ -74,6 +76,14 @@ class App(QtWidgets.QWidget):
         self.ccb_currency_to.setCurrentText(currency_from)
 
         self.compute()
+
+    def setup_css(self):
+        self.setStyleSheet("""
+        background-color:rgb(30, 30, 30);
+        color:rgb(240, 240, 240);
+        border:none;
+        """)
+        self.btn_inverse.setStyleSheet("background-color:red;")
 
 
 app = QtWidgets.QApplication([])
