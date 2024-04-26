@@ -33,9 +33,13 @@ class Movie:
             logging.warning(f"movie {self.movie_title} already recorded")
             return False
 
-
+    def remove_from_movies(self):
+        list_movies=self._get_movies()
+        if self.movie_title in list_movies:
+            list_movies.remove(self.movie_title)
+            self._write_movies(list_movies)
 
 if __name__ == "__main__":
     m = Movie("Formationkilo movie")
-    m.add_to_movies()
-    print(m.add_to_movies())
+    #m.add_to_movies()
+    print(m.remove_from_movies())
