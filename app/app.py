@@ -16,6 +16,7 @@ class App(QtWidgets.QWidget):
         self.setWindowTitle("Currency Converter")
         self.setup_ui()
         self.set_default_values()
+        self.setup_connections()
 
     def setup_ui(self):
         self.layout = QtWidgets.QHBoxLayout(self)
@@ -45,9 +46,31 @@ class App(QtWidgets.QWidget):
         self.spn_amount.setValue(100)
         self.spn_amount_converted.setValue(100)
 
+    def setup_connections(self):
+        self.ccb_currency_from.activated.connect(self.compute)
+        self.ccb_currency_to.activated.connect(self.compute)
+
+        self.spn_amount.valueChanged.connect(self.compute)
+        self.spn_amount_converted.valueChanged.connect(self.compute)
+
+        self.btn_inverse.clicked.connect(self.inverse_currency)
+
+    def compute(self):
+        print("compute")
+
+    def inverse_currency(self):
+        print("inverse currency")
+
 
 app = QtWidgets.QApplication([])
 win = App()
 win.show()
 
 app.exec()
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+
+    win = App()
+    win.show()
+
+    app.exec()
