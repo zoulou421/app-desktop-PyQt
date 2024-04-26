@@ -59,8 +59,12 @@ class App(QtWidgets.QWidget):
         amount = self.spn_amount.value()
         currency_from = self.ccb_currency_from.currentText()
         currency_to = self.ccb_currency_to.currentText()
-        result = self.c.convert(amount, currency_from, currency_to)
-        self.spn_amount_converted.setValue(result)
+        try:
+            result = self.c.convert(amount, currency_from, currency_to)
+        except currency_converter.currency_converter.RateNotFoundError:
+            print("Conversion did not work")
+        else:
+            self.spn_amount_converted.setValue(result)
 
     def inverse_currency(self):
         currency_from = self.ccb_currency_from.currentText()
@@ -70,8 +74,6 @@ class App(QtWidgets.QWidget):
         self.ccb_currency_to.setCurrentText(currency_from)
 
         self.compute()
-
-
 
 
 app = QtWidgets.QApplication([])
