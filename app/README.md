@@ -4,6 +4,10 @@ Note: Files in this  project are enough documented.
 Every file almost represent a small project.
 So you can pick one by one and try to understand the source code.
 
+![first.JPG](first.JPG)
+
+![second.JPG](second.JPG)
+
 What you are going to learn in this finished small project:
 
 How to CREATE a user interface structure.
