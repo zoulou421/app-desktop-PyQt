@@ -56,10 +56,22 @@ class App(QtWidgets.QWidget):
         self.btn_inverse.clicked.connect(self.inverse_currency)
 
     def compute(self):
-        print("compute")
+        amount = self.spn_amount.value()
+        currency_from = self.ccb_currency_from.currentText()
+        currency_to = self.ccb_currency_to.currentText()
+        result = self.c.convert(amount, currency_from, currency_to)
+        self.spn_amount_converted.setValue(result)
 
     def inverse_currency(self):
-        print("inverse currency")
+        currency_from = self.ccb_currency_from.currentText()
+        currency_to = self.ccb_currency_to.currentText()
+
+        self.ccb_currency_from.setCurrentText(currency_to)
+        self.ccb_currency_to.setCurrentText(currency_from)
+
+        self.compute()
+
+
 
 
 app = QtWidgets.QApplication([])
