@@ -1,4 +1,4 @@
-# An example of currency app conversion 
+# An example of currency  conversion app
 
 Note: Files in this  project are enough documented.
 Every file almost represent a small project.
