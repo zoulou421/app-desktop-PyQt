@@ -1,6 +1,8 @@
 from PySide6 import QtWidgets, QtCore
 from movie import get_all_movies
 
+from movie import Movie
+
 
 class App(QtWidgets.QWidget):  # QWidget represent our window
     def __init__(self):
@@ -41,7 +43,21 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         self.le_movieTitle.returnPressed.connect(self.add_Movie)
 
     def add_Movie(self):
-        print("add movie")
+        # retrieve text in linedit
+        movie_title = self.le_movieTitle.text()
+        if not movie_title:
+            return False
+        # create a Movie instance
+        my_movie = Movie(movie_title)
+        # add movie in json file
+        result = my_movie.add_to_movies()
+        if result:
+            lw_item = QtWidgets.QListWidgetItem(my_movie.movie_title)
+            lw_item.setData(QtCore.Qt.UserRole, my_movie)
+            self.lw_movies.addItem(lw_item)
+        self.le_movieTitle.setText("")
+
+
 
     def remove_Movie(self):
         print("remove movie or movies")
