@@ -1,3 +1,5 @@
+"""API movies class"""
+
 import os
 import json
 import logging
