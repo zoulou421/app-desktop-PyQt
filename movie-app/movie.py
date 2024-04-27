@@ -5,6 +5,19 @@ import logging
 CUR_DIR = os.path.dirname(__file__)
 DATA_FILE = os.path.join(CUR_DIR, "data", "movies.json")
 
+"""  movies=[]
+        my_movies_title=json.load(f)
+    for my_movies_title in my_movies_title:
+        movies.append(Movie(my_movies_title))
+"""
+
+
+def get_all_movies():
+    with open(DATA_FILE, "r") as f:
+        my_movies_title = json.load(f)
+    movies = [Movie(my_movie_title) for my_movie_title in my_movies_title]
+    return movies
+
 
 class Movie:
     def __init__(self, movie_title):
@@ -34,12 +47,15 @@ class Movie:
             return False
 
     def remove_from_movies(self):
-        list_movies=self._get_movies()
+        list_movies = self._get_movies()
         if self.movie_title in list_movies:
             list_movies.remove(self.movie_title)
             self._write_movies(list_movies)
 
+
 if __name__ == "__main__":
     m = Movie("Formationkilo movie")
-    #m.add_to_movies()
-    print(m.remove_from_movies())
+    m.add_to_movies()
+    # print(m.remove_from_movies())
+    movie = get_all_movies()
+    print(movie)

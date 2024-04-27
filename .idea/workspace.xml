@@ -8,7 +8,6 @@
       <change afterPath="$PROJECT_DIR$/movie-app/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/movie-app/data/movies.json" beforeDir="false" afterPath="$PROJECT_DIR$/movie-app/data/movies.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/movie-app/movie.py" beforeDir="false" afterPath="$PROJECT_DIR$/movie-app/movie.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
