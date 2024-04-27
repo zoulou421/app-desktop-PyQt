@@ -58,6 +58,9 @@ class Movie:
 if __name__ == "__main__":
     m = Movie("Formationkilo movie")
     m.add_to_movies()
+    m1 = Movie("Jean claude vandamme")
+    m1.add_to_movies()
+
     # print(m.remove_from_movies())
     movie = get_all_movies()
     print(movie)
