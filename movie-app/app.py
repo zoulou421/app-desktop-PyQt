@@ -1,4 +1,4 @@
-from PySide6 import QtWidgets,QtCore
+from PySide6 import QtWidgets, QtCore
 from movie import get_all_movies
 
 
@@ -8,6 +8,7 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         self.setWindowTitle("Welcome on movie app")
         self.setup_ui()
         self.populate_movies_v2()
+        self.setup_connections()
 
     def setup_ui(self):
         self.main_layout = QtWidgets.QVBoxLayout(self)
@@ -26,12 +27,24 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         movies = get_all_movies()
         for movie in movies:
             self.lw_movies.addItem(movie.movie_title)
+
     def populate_movies_v2(self):
         movies = get_all_movies()
         for movie in movies:
-            lw_item=QtWidgets.QListWidgetItem(movie.movie_title)
-            lw_item.setData(QtCore.Qt.UserRole,movie)
+            lw_item = QtWidgets.QListWidgetItem(movie.movie_title)
+            lw_item.setData(QtCore.Qt.UserRole, movie)
             self.lw_movies.addItem(lw_item)
+
+    def setup_connections(self):
+        self.btn_addMovie.clicked.connect(self.add_Movie)
+        self.btn_removeMovies.clicked.connect(self.remove_Movie)
+        self.le_movieTitle.returnPressed.connect(self.add_Movie)
+
+    def add_Movie(self):
+        print("add movie")
+
+    def remove_Movie(self):
+        print("remove movie or movies")
 
 
 app = QtWidgets.QApplication([])
