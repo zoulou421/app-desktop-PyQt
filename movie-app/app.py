@@ -35,8 +35,12 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         movies = get_all_movies()
         for movie in movies:
             lw_item = QtWidgets.QListWidgetItem(movie.movie_title)
-            lw_item.setData(QtCore.Qt.UserRole, movie) #added to associate an instance(movie)
+            #lw_item.setData(QtCore.Qt.UserRole, movie)  # added to associate an instance(movie) (ooo)
             # to a lw_item[you can retrieve that instance(movie)  with data(as in remove method:movie = selected_item.data(QtCore.Qt.UserRole)]
+
+            #next line is alternative(ooo) reference
+            lw_item.film = movie  # alternative
+
             self.lw_movies.addItem(lw_item)
 
     def setup_connections(self):
@@ -55,7 +59,10 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         result = my_movie.add_to_movies()
         if result:
             lw_item = QtWidgets.QListWidgetItem(my_movie.movie_title)
-            lw_item.setData(QtCore.Qt.UserRole, my_movie)
+
+            # lw_item.setData(QtCore.Qt.UserRole, my_movie) next line is alternative
+            lw_item.film = my_movie  # alternative
+
             self.lw_movies.addItem(lw_item)
         self.le_movieTitle.setText("")
 
@@ -64,7 +71,10 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
             # movie=Movie(selected_item.text()) it would be very simple but avoid to recreate instance for little
             # classes, it would be ok, but if classes have alot of methods, it will become heavy and redundant to
             # recreate instances that where the  next line is important
-            movie = selected_item.data(QtCore.Qt.UserRole)
+
+            # movie = selected_item.data(QtCore.Qt.UserRole) next line is alternative
+            movie = selected_item.film  # alternative
+
             movie.remove_from_movies()
             self.lw_movies.takeItem(self.lw_movies.row(selected_item))
 
