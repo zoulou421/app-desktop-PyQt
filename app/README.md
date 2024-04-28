@@ -8,23 +8,23 @@ So you can pick one by one and try to understand the source code.
 
 ![second.JPG](second.JPG)
 
-What you are going to learn in this finished small project:
+What you are going to learn through this unfinished project:
 
-How to CREATE a user interface structure.
+🚀How to CREATE a user interface structure.
 
-How to CREATE a MAIN WINDOW with UI in PyQt( and especially PySide6).
+🚀How to CREATE a MAIN WINDOW with UI in PyQt( and especially PySide6).
 
-How to CREATE  widgets.
+🚀How to CREATE  widgets.
 
-How to CONVERT  currencies and DISPLAY result.
+🚀How to CONVERT  currencies and DISPLAY result.
 
-How to DEFINE DEFAULT VALUES of widgets.
+🚀How to DEFINE DEFAULT VALUES of widgets.
 
-How to connect widgets with methods.
+🚀How to connect widgets with methods.
 
-How to Manage specific Errors using:try,except and else.
+🚀How to Manage specific Errors using:try,except and else.
 
-How to add CSS to change color of your app.
+🚀How to add CSS to change color of your app.
 
 ## Documentation
 

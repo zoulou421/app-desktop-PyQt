@@ -18,6 +18,7 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         self.le_movieTitle = QtWidgets.QLineEdit()
         self.btn_addMovie = QtWidgets.QPushButton("Add a movie")
         self.lw_movies = QtWidgets.QListWidget()
+        self.lw_movies.setSelectionMode(QtWidgets.QListWidget.ExtendedSelection)  # added for multiple selection
         self.btn_removeMovies = QtWidgets.QPushButton("Remove movie(s)")
 
         self.main_layout.addWidget(self.le_movieTitle)
@@ -34,7 +35,8 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
         movies = get_all_movies()
         for movie in movies:
             lw_item = QtWidgets.QListWidgetItem(movie.movie_title)
-            lw_item.setData(QtCore.Qt.UserRole, movie)
+            lw_item.setData(QtCore.Qt.UserRole, movie) #added to associate an instance(movie)
+            # to a lw_item[you can retrieve that instance(movie)  with data(as in remove method:movie = selected_item.data(QtCore.Qt.UserRole)]
             self.lw_movies.addItem(lw_item)
 
     def setup_connections(self):
@@ -57,10 +59,14 @@ class App(QtWidgets.QWidget):  # QWidget represent our window
             self.lw_movies.addItem(lw_item)
         self.le_movieTitle.setText("")
 
-
-
     def remove_Movie(self):
-        print("remove movie or movies")
+        for selected_item in self.lw_movies.selectedItems():
+            # movie=Movie(selected_item.text()) it would be very simple but avoid to recreate instance for little
+            # classes, it would be ok, but if classes have alot of methods, it will become heavy and redundant to
+            # recreate instances that where the  next line is important
+            movie = selected_item.data(QtCore.Qt.UserRole)
+            movie.remove_from_movies()
+            self.lw_movies.takeItem(self.lw_movies.row(selected_item))
 
 
 app = QtWidgets.QApplication([])
